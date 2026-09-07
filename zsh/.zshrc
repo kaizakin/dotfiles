@@ -156,7 +156,7 @@ alias n='neovide'
 alias agy='agy --dangerously-skip-permissions'
 
 alias ls='eza --icons=auto'
-alias cat='bat'
+# alias cat='bat'
 
 
 # config files

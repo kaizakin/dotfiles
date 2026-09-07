@@ -58,6 +58,7 @@ PanelWindow {
     property bool emojiPickerOpen: false
     property bool recorderOpen: false
     property bool recording: false
+    property bool mediaOpen: false
     property var recordActions: []
     property int recordIndex: 0
     property int emojiIndex: 0
@@ -68,7 +69,7 @@ PanelWindow {
     property date calendarMonth: new Date()
     readonly property var filteredClipboard: filterClipboard(clipboardQuery)
     readonly property var selectedClipboard: filteredClipboard.length > 0 ? filteredClipboard[clipboardIndex] : null
-    readonly property bool expanded: panelOpen || ((hasMedia || idleMedia) && islandHover.hovered && !pillNotification)
+    readonly property bool expanded: panelOpen || (mediaOpen && !pillNotification)
     readonly property bool panelOpen: themePickerOpen || wallpaperPickerOpen || clipboardPickerOpen || launcherOpen || calendarOpen || emojiPickerOpen || recorderOpen
 
     function closePanels() {
@@ -79,6 +80,7 @@ PanelWindow {
         calendarOpen = false
         emojiPickerOpen = false
         recorderOpen = false
+        mediaOpen = false
         emojiEntries = []
     }
 
@@ -100,6 +102,7 @@ PanelWindow {
                 || (panel === "calendar" && calendarOpen)
                 || (panel === "emoji" && emojiPickerOpen)
                 || (panel === "recorder" && recorderOpen)
+                || (panel === "media" && mediaOpen)
         closePanels()
         if (alreadyOpen)
             return
@@ -110,6 +113,11 @@ PanelWindow {
         else if (panel === "calendar") calendarOpen = true
         else if (panel === "emoji") emojiPickerOpen = true
         else if (panel === "recorder") recorderOpen = true
+        else if (panel === "media") mediaOpen = true
+    }
+
+    function toggleMedia() {
+        togglePanel("media")
     }
 
     function openRecorder() {
@@ -467,6 +475,10 @@ PanelWindow {
         function toggleRecorder(): void {
             root.openRecorder()
         }
+
+        function toggleMedia(): void {
+            root.toggleMedia()
+        }
     }
 
     FocusScope {
@@ -536,7 +548,7 @@ PanelWindow {
     Item {
         id: dismissArea
         anchors.fill: parent
-        visible: root.panelOpen
+        visible: root.panelOpen || root.mediaOpen
 
         MouseArea {
             anchors.fill: parent
@@ -630,10 +642,6 @@ PanelWindow {
             }
         }
 
-        HoverHandler {
-            id: islandHover
-        }
-
         component Art: ClippingRectangle {
             id: artFrame
             required property string artSource
@@ -691,20 +699,38 @@ PanelWindow {
                 id: controlMouse
                 anchors.fill: parent
                 hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
                 enabled: parent.enabled
                 onClicked: parent.activated()
             }
         }
 
-        Text {
+        Row {
             anchors.left: parent.left
             anchors.leftMargin: 12
+            anchors.right: mediaToggleButton.left
+            anchors.rightMargin: 6
             anchors.verticalCenter: parent.verticalCenter
             visible: !root.hasMedia && !root.expanded && !root.themePickerOpen && !root.wallpaperPickerOpen && !root.clipboardPickerOpen && !root.launcherOpen && !root.calendarOpen && !root.emojiPickerOpen && !root.pillNotification
-            text: ""
-            color: root.recording ? Local.Theme.danger : Local.Theme.subtleMuted
-            font.family: Local.Theme.font
-            font.pixelSize: 16
+            spacing: 8
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: ""
+                color: root.recording ? Local.Theme.danger : Local.Theme.subtleMuted
+                font.family: Local.Theme.font
+                font.pixelSize: 14
+            }
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                text: "Media"
+                color: Local.Theme.secondaryText
+                font.family: Local.Theme.font
+                font.pixelSize: 11
+                font.bold: true
+                elide: Text.ElideRight
+            }
         }
 
         Art {
@@ -728,8 +754,8 @@ PanelWindow {
         Text {
             anchors.left: compactArt.right
             anchors.leftMargin: 9
-            anchors.right: parent.right
-            anchors.rightMargin: 9
+            anchors.right: mediaToggleButton.left
+            anchors.rightMargin: 6
             anchors.verticalCenter: compactArt.verticalCenter
             opacity: root.expanded ? 0 : 1
             visible: root.hasMedia && !root.panelOpen && !root.pillNotification
@@ -742,6 +768,48 @@ PanelWindow {
 
             Behavior on opacity {
                 NumberAnimation { duration: 120 }
+            }
+        }
+
+        Rectangle {
+            id: mediaToggleButton
+            width: 22
+            height: 22
+            radius: height / 2
+            anchors.right: parent.right
+            anchors.rightMargin: Local.Settings.notchMode ? 8 : 6
+            anchors.verticalCenter: parent.verticalCenter
+            visible: !root.expanded && !root.panelOpen && !root.pillNotification
+            opacity: root.expanded ? 0 : 1
+
+            color: mediaToggleMouse.containsMouse ? Local.Theme.accent : Local.Theme.surface
+            border.color: mediaToggleMouse.containsMouse ? Local.Theme.highlight : Local.Theme.accent
+            border.width: 1
+
+            Behavior on opacity {
+                NumberAnimation { duration: 120 }
+            }
+            Behavior on color {
+                ColorAnimation { duration: 120 }
+            }
+            Behavior on border.color {
+                ColorAnimation { duration: 120 }
+            }
+
+            Text {
+                anchors.centerIn: parent
+                text: "󰅀"
+                color: mediaToggleMouse.containsMouse ? Local.Theme.highlight : Local.Theme.secondaryText
+                font.family: Local.Theme.font
+                font.pixelSize: 12
+            }
+
+            MouseArea {
+                id: mediaToggleMouse
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onClicked: root.toggleMedia()
             }
         }
 
@@ -842,15 +910,27 @@ PanelWindow {
                 }
             }
 
-            Control {
+            Row {
                 anchors.right: parent.right
                 anchors.rightMargin: 10 * details.contentScale
                 anchors.top: parent.top
-                icon: "󰒓"
-                enabled: true
-                highlighted: true
-                contentScale: details.contentScale
-                onActivated: settingsProcess.running = true
+                spacing: 6 * details.contentScale
+
+                Control {
+                    icon: "󰅁"
+                    enabled: true
+                    highlighted: true
+                    contentScale: details.contentScale
+                    onActivated: root.closePanels()
+                }
+
+                Control {
+                    icon: "󰒓"
+                    enabled: true
+                    highlighted: true
+                    contentScale: details.contentScale
+                    onActivated: settingsProcess.running = true
+                }
             }
         }
 
