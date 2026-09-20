@@ -1,0 +1,60 @@
+# Swaylock configuration
+# Managed via dotfiles GNU Stow package: swaylock
+
+# Behavior
+daemonize
+ignore-empty-password
+show-failed-attempts
+indicator-caps-lock
+
+# Indicator geometry
+indicator-radius=100
+indicator-thickness=12
+
+# Typography
+font=JetBrainsMono Nerd Font
+font-size=24
+
+# Background
+color=1e1e2e
+scaling=fill
+# Uncomment to use a wallpaper:
+# image=/home/karthik/dotfiles/wallpapers/wallhaven-3k1g33.png
+
+# Indicator ring styling
+line-uses-inside
+separator-color=00000000
+
+# Normal / Typing state (Catppuccin Mocha)
+inside-color=1e1e2ecc
+ring-color=89b4fa
+key-hl-color=a6e3a1
+bs-hl-color=f38ba8
+text-color=cdd6f4
+
+# Verifying state
+inside-ver-color=89b4facc
+ring-ver-color=89b4fa
+text-ver-color=1e1e2e
+
+# Wrong / Failed state
+inside-wrong-color=f38ba8cc
+ring-wrong-color=f38ba8
+text-wrong-color=1e1e2e
+
+# Clear state
+inside-clear-color=f9e2afcc
+ring-clear-color=f9e2af
+text-clear-color=1e1e2e
+
+# Caps Lock state
+inside-caps-lock-color=fab387cc
+ring-caps-lock-color=fab387
+text-caps-lock-color=1e1e2e
+caps-lock-key-hl-color=a6e3a1
+caps-lock-bs-hl-color=f38ba8
+
+# Layout indicator
+layout-bg-color=1e1e2ecc
+layout-border-color=313244
+layout-text-color=cdd6f4

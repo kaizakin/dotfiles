@@ -19,6 +19,7 @@ I bounce between a niri + Quickshell desktop and some leftover Hyprland / Waybar
 - **fastfetch** — fetch config. `assets/` has screenshots of it.
 - **neovide** — GUI Neovim wrapper.
 - **herdr** — Herdr client config.
+- **swaylock** — Wayland screen locker config.
 - **wallpapers** — pictures. Quickshell looks for walls in `~/.wall`, so copy or symlink them there.
 - **skills** — agent skills I keep next to the configs. Not a Stow package.
 
@@ -27,7 +28,7 @@ I bounce between a niri + Quickshell desktop and some leftover Hyprland / Waybar
 You want [GNU Stow](https://www.gnu.org/software/stow/) and the programs for the packages you care about. On Arch:
 
 ```bash
-sudo pacman -S stow niri zsh neovim tmux ghostty
+sudo pacman -S stow niri zsh neovim tmux ghostty swaylock
 ```
 
 Quickshell is separate; install that however you usually do, then:
@@ -35,7 +36,7 @@ Quickshell is separate; install that however you usually do, then:
 ```bash
 git clone https://github.com/kaizakin/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-stow zsh niri nvim tmux ghostty quickshell starship
+stow zsh niri nvim tmux ghostty quickshell starship swaylock
 ```
 
 Stow from the repo root. It will symlink `zsh/.zshrc` → `~/.zshrc`, `niri/.config/niri` → `~/.config/niri`, and so on.
