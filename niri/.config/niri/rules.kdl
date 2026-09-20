@@ -76,3 +76,8 @@ window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
 }
+
+layer-rule {
+    match namespace="^awww-daemonoverview$"
+    place-within-backdrop true
+}

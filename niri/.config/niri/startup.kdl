@@ -18,3 +18,5 @@ spawn-at-startup "/usr/bin/gnome-keyring-daemon" "--start" "--components=secrets
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
+spawn-at-startup "awww-daemon" "--namespace" "overview"
+spawn-at-startup "sh" "-c" "sleep 1; awww img -n overview $(strings ~/.cache/awww/0.12.1/eDP-1 | tail -n 1)"
