@@ -6,3 +6,6 @@ omarchy/*
 /herdr/.config/herdr/release-notes.json
 /herdr/.config/herdr/sessions/portfolio
 /herdr/.config/herdr/sessions/ollama
+/.cursor
+/error.log
+/message_log.txt
