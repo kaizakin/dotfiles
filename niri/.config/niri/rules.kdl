@@ -4,12 +4,12 @@ window-rule {
 }
 
 window-rule {
-    match app-id="^obsidian$"
+    match app-id=r#"(?i)obsidian"#
     open-maximized true
 }
 
 window-rule {
-    match app-id="^zed$"
+    match app-id=r#"(?i)^(dev\.zed\.Zed.*|zed)$"#
     open-maximized true
 }
 
