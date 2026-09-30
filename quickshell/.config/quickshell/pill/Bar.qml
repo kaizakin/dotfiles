@@ -217,6 +217,8 @@ PanelWindow {
                     }
                 }
             }
+
+            Components.RecordButton {}
         }
 
         Row {
@@ -471,6 +473,38 @@ PanelWindow {
                             anchors.verticalCenter: parent.verticalCenter
                         }
                     }
+                }
+            }
+
+            Pill {
+                id: settingsPill
+                width: 30
+                color: settingsMouse.containsMouse ? Theme.background : Theme.surface
+                border.color: settingsMouse.containsMouse ? Theme.highlight : Theme.accent
+                border.width: 1
+
+                Behavior on color { ColorAnimation { duration: 120 } }
+                Behavior on border.color { ColorAnimation { duration: 120 } }
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "󰒓"
+                    color: settingsMouse.containsMouse ? Theme.highlight : Theme.text
+                    font.family: Theme.font
+                    font.pixelSize: 15
+                }
+
+                MouseArea {
+                    id: settingsMouse
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: if (!settingsProc.running) settingsProc.running = true
+                }
+
+                Process {
+                    id: settingsProc
+                    command: ["qs", "ipc", "call", "pillSettings", "toggle"]
                 }
             }
         }
