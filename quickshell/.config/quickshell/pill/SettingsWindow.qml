@@ -8,7 +8,7 @@ import "components" as Components
 FloatingWindow {
     id: root
 
-    title: "Serashell"
+    title: "kaizakin"
     implicitWidth: 1040
     implicitHeight: 720
     minimumSize: Qt.size(760, 520)
@@ -345,7 +345,7 @@ FloatingWindow {
                             anchors.leftMargin: 30
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.verticalCenterOffset: -10
-                            text: "Serashell"
+                            text: "kaizakin"
                             color: Local.Theme.text
                             font.family: Local.Theme.font
                             font.pixelSize: 18
@@ -393,29 +393,7 @@ FloatingWindow {
                     spacing: 5
 
                     Rectangle {
-                        width: 34
-                        height: 34
-                        radius: 9
-                        color: githubMouse.containsMouse ? Local.Theme.surface : Local.Theme.accent
-
-                        Text {
-                            anchors.centerIn: parent
-                            text: ""
-                            color: Local.Theme.text
-                            font.family: Local.Theme.font
-                            font.pixelSize: 14
-                        }
-
-                        MouseArea {
-                            id: githubMouse
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onClicked: Quickshell.execDetached({ command: ["xdg-open", "https://github.com/YoruAkio/Serashell"] })
-                        }
-                    }
-
-                    Rectangle {
-                        width: parent.width - 39
+                        width: parent.width
                         height: 34
                         radius: 9
                         color: resetMouse.containsMouse ? Local.Theme.surface : Local.Theme.accent
