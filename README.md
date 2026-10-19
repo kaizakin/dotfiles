@@ -19,6 +19,7 @@ I bounce between a niri + Quickshell desktop and some leftover Hyprland / Waybar
 - **fastfetch** — fetch config. `assets/` has screenshots of it.
 - **neovide** — GUI Neovim wrapper.
 - **herdr** — Herdr client config.
+- **sddm** — login screen ([sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)). Not a Stow package — uses `install.sh` because the theme lives in `/usr/share/sddm/themes/`.
 - **swaylock** — Wayland screen locker config.
 - **wallpapers** — pictures. Quickshell looks for walls in `~/.wall`, so copy or symlink them there.
 - **skills** — agent skills I keep next to the configs. Not a Stow package.
@@ -34,7 +35,7 @@ sudo pacman -S stow niri zsh neovim tmux ghostty swaylock
 Quickshell is separate; install that however you usually do, then:
 
 ```bash
-git clone https://github.com/kaizakin/dotfiles.git ~/dotfiles
+git clone --recurse-submodules https://github.com/kaizakin/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 stow zsh niri nvim tmux ghostty quickshell starship swaylock
 ```
@@ -44,6 +45,12 @@ Stow from the repo root. It will symlink `zsh/.zshrc` → `~/.zshrc`, `niri/.con
 Don't stow a package if that program isn't installed. Conflicts mean something already lives at that path; move it aside and stow again.
 
 First zsh run clones zinit into `~/.local/share/zinit`. First nvim run installs plugins via lazy.
+
+SDDM login theme (can't be stowed — needs sudo):
+
+```bash
+./sddm/install.sh
+```
 
 Wallpapers:
 
