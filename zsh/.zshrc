@@ -303,3 +303,4 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
 export PATH="/usr/bin:$PATH"
+ulimit -c 0
