@@ -20,17 +20,17 @@ window-rule {
 
 window-rule {
     match app-id="com.t3tools.T3Code"
-    open-floating true
+    open-maximized true
 }
 
 window-rule {
     match app-id="com.anthropic.claude"
-    open-floating true
+    open-maximized true
 }
 
 window-rule {
     match app-id="cursor"
-    open-floating true
+    open-maximized true
 }
 
 window-rule {
