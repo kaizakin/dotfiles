@@ -19,6 +19,16 @@ window-rule {
 }
 
 window-rule {
+    match app-id="com.anthropic.claude"
+    open-floating true
+}
+
+window-rule {
+    match app-id="cursor"
+    open-floating true
+}
+
+window-rule {
     match app-id=r#"^(local\.)?bluetui$"#
     open-floating true
     default-column-width { fixed 680; }
