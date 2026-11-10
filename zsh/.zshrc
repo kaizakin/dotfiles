@@ -304,3 +304,10 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
 
 export PATH="/usr/bin:$PATH"
 ulimit -c 0
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# opencode
+export PATH=/home/karthik/.opencode/bin:$PATH
+
+# maestro
+export PATH=$PATH:$HOME/.maestro/bin
