@@ -218,17 +218,6 @@ PanelWindow {
                 }
             }
 
-            Components.RecordButton {}
-        }
-
-        Row {
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.topMargin: 8
-            spacing: 8
-
-
-
             Pill {
                 id: aiUsagePill
                 visible: Settings.showAiUsage
@@ -264,6 +253,17 @@ PanelWindow {
 
                 Process { id: aiProc }
             }
+
+            Components.RecordButton {}
+        }
+
+        Row {
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.topMargin: 8
+            spacing: 8
+
+
 
             Pill {
                 id: netBtPill
