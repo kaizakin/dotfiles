@@ -1,0 +1,14 @@
+{
+  "zoom": 0.9,
+  "sounds": {
+    "enabled": true
+  },
+  "font_ligatures": false,
+  "minimum_contrast": 1,
+  "appearance": "dark",
+  "colors": {
+    "background": "#000000"
+  },
+  "font_size": 12,
+  "ui_font": "Adwaita Sans"
+}

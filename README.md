@@ -19,6 +19,7 @@ I bounce between a niri + Quickshell desktop and some leftover Hyprland / Waybar
 - **fastfetch** — fetch config. `assets/` has screenshots of it.
 - **neovide** — GUI Neovim wrapper.
 - **herdr** — Herdr client config.
+- **herdr-app** — the Herdr app's whole interface (layouts, `keys.json`, `settings.json`, mods). Stows to `~/.config/herdr-app`. Generated files and runtime state are git-ignored.
 - **sddm** — login screen ([sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)). Not a Stow package — uses `install.sh` because the theme lives in `/usr/share/sddm/themes/`.
 - **swaylock** — Wayland screen locker config.
 - **wallpapers** — pictures. Quickshell looks for walls in `~/.wall`, so copy or symlink them there.
