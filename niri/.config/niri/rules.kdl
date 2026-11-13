@@ -24,7 +24,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="com.anthropic.claude"
+    match app-id="com.anthropic.Claude"
     open-maximized true
 }
 
