@@ -1,0 +1,3 @@
+# ghostty
+
+Ghostty terminal config.

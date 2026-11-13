@@ -1,0 +1,3 @@
+# waybar
+
+Waybar config (legacy).

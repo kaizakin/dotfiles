@@ -1,0 +1,3 @@
+# fastfetch
+
+fastfetch config.
