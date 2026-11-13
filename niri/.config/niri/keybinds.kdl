@@ -13,6 +13,9 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
+    // open the vicinae emoji picker
+    Mod+Ctrl+E { spawn-sh "vicinae deeplink vicinae://launch/core/search-emojis"; }
+
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "vicinae" "toggle"; }
