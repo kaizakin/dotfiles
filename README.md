@@ -6,24 +6,23 @@ I bounce between a niri + Quickshell desktop and some leftover Hyprland / Waybar
 
 ## What's in here
 
-- **niri** — tiling compositor. Keybinds, layout, window rules, startup.
-- **quickshell** — the bar and overlay shell (pills, launcher, clipboard, AI usage, etc.).
-- **hyprland** / **waybar** — older Hyprland setup. Still here if I need it.
-- **zsh** — `.zshrc` with zinit, fzf-tab, and a pile of aliases.
-- **nvim** — Neovim, lazy.nvim, the usual.
-- **tmux** — `.tmux.conf` plus a couple of resurrect helper scripts.
-- **ghostty** / **kitty** — terminals. Ghostty is the one I open.
-- **starship** / **ohmyposh** — prompt themes. Pick one.
-- **walker** — app launcher theme.
-- **zathura** — PDF viewer.
-- **fastfetch** — fetch config. `assets/` has screenshots of it.
-- **neovide** — GUI Neovim wrapper.
-- **herdr** — Herdr client config.
-- **herdr-app** — the Herdr app's whole interface (layouts, `keys.json`, `settings.json`, mods). Stows to `~/.config/herdr-app`. Generated files and runtime state are git-ignored.
-- **sddm** — login screen ([sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)). Not a Stow package — uses `install.sh` because the theme lives in `/usr/share/sddm/themes/`.
-- **swaylock** — Wayland screen locker config.
-- **wallpapers** — pictures. Quickshell looks for walls in `~/.wall`, so copy or symlink them there.
-- **skills** — agent skills I keep next to the configs. Not a Stow package.
+- **niri**: tiling compositor. Keybinds, layout, window rules, startup.
+- **quickshell**: the bar and overlay shell (pills, launcher, clipboard, AI usage, etc.).
+- **hyprland** / **waybar**: older Hyprland setup. Still here if I need it.
+- **zsh**: `.zshrc` with zinit, fzf-tab, and a pile of aliases.
+- **nvim**: Neovim, lazy.nvim, the usual.
+- **tmux**: `.tmux.conf` plus a couple of resurrect helper scripts.
+- **ghostty** / **kitty**: terminals. Ghostty is the one I open.
+- **starship** / **ohmyposh**: prompt themes. Pick one.
+- **walker**: app launcher theme.
+- **zathura**: PDF viewer.
+- **fastfetch**: fetch config. `assets/` has screenshots of it.
+- **neovide**: GUI Neovim wrapper.
+- **herdr**: Herdr client config.
+- **herdr-app**: the Herdr app's whole interface (layouts, `keys.json`, `settings.json`, mods). Stows to `~/.config/herdr-app`. Generated files and runtime state are git-ignored.
+- **sddm**: login screen ([sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)). Not a Stow package; uses `install.sh` because the theme lives in `/usr/share/sddm/themes/`.
+- **swaylock**: Wayland screen locker config.
+- **wallpapers**: pictures. Quickshell looks for walls in `~/.wall`, so copy or symlink them there.
 
 ## Setup
 
@@ -47,7 +46,7 @@ Don't stow a package if that program isn't installed. Conflicts mean something a
 
 First zsh run clones zinit into `~/.local/share/zinit`. First nvim run installs plugins via lazy.
 
-SDDM login theme (can't be stowed — needs sudo):
+SDDM login theme (can't be stowed; needs sudo):
 
 ```bash
 ./sddm/install.sh
